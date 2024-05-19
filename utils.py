@@ -4,6 +4,7 @@ from langchain.chat_models import ChatOpenAI # Langchain AI chat library
 from langchain.chains.summarize import load_summarize_chain # Langchain summarization library
 from langchain.text_splitter import RecursiveCharacterTextSplitter # To split our transcript into pieces
 import os #To access file repositories
+
 from langchain.prompts.chat import (
     ChatPromptTemplate,
     SystemMessagePromptTemplate,
@@ -11,6 +12,8 @@ from langchain.prompts.chat import (
     HumanMessagePromptTemplate
 )
 
+
+# Transcribe Audio Function
 @st.cache_data
 def transcribe_audio(audio, speakers_expected):
     """
@@ -19,8 +22,8 @@ def transcribe_audio(audio, speakers_expected):
     and a specified number of speakers
 
     """
-    # Set API key
-    aai.settings.api_key = "488825166df34eb4bde6db2b168aab31"
+    # Settinng Assembly API key
+    aai.settings.api_key = "AAI KEY"
     
     # Configure transcription
     config = aai.TranscriptionConfig(speaker_labels=True, speakers_expected=speakers_expected)
@@ -40,9 +43,9 @@ def transcribe_audio(audio, speakers_expected):
 
     return transcript_text
 
-
+# Setting Get summary function
 def get_summary(content, Language, summary_type):
-    os.environ['OPENAI_API_KEY'] = "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"
+    os.environ['OPENAI_API_KEY'] = "OPEN-AI KEY"
     text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n"], chunk_size=2000, chunk_overlap=250)
     texts = text_splitter.create_documents([content])
 
