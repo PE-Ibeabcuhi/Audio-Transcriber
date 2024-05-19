@@ -45,7 +45,7 @@ def transcribe_audio(audio, speakers_expected):
 
 # Setting Get summary function
 def get_summary(content, Language, summary_type):
-    os.environ['OPENAI_API_KEY'] = "OPEN-AI KEY"
+    os.environ['OPENAI_API_KEY'] = "API KEY"
     text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n"], chunk_size=2000, chunk_overlap=250)
     texts = text_splitter.create_documents([content])
 
